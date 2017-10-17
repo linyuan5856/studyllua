@@ -58,3 +58,45 @@ set.print(s3)
 --Lua查找元表的步骤  1.如果第一个值 有元表且有__add字段 2.如果第二个值 有元表且有__add字段 3.第一个第二个 都没有 引发错误
 
 --13.2 关系类的元方法
+--[[__eq 等于 __lt 小于 __lq 小于等于]]
+--[[将 a~=b 转换为 not (a==b)  a>b转化为 b>a a>=b 转换为 b<=a ]]
+
+
+--13.3 库定义的元方法
+--[[__metatable  用户 只能getmetatable  不能设置 metatable]]
+
+t={}
+t.__metatable="you can just see me "
+s={}
+setmetatable(s, t)
+print(getmetatable(s))  --you can just see me 
+setmetatable(s,{})  --cannot change a protexted metatable
+
+--13.4 table的访问方法
+--13.4.1  __index 元方法
+window={}
+mt={}
+setmetatable(window, mt)
+window.property={width=10,height=20}
+print(window.width)          --nil
+mt.__index=window.property
+print(window.width)          --10
+print(rawget(window,width)) --nil  如果不希望访问table 涉及__index元方法 可以通过函数rawget
+
+--13.4.2  __newindex 元方法
+--13.4.3  具有默认值的table
+local mt={__index=function (k) return k.___ end}
+color={r=255,g=13,b=127}
+
+function SetDefault(t,d)
+t.___=d
+setmetatable(t, mt)
+end
+
+print(color.r)          --255
+print(color.a)          --nil
+SetDefault(color,125)
+print(color.a)          --125
+
+--13.4.4  跟踪table的访问
+--13.4.5  只读的table
