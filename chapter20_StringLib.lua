@@ -107,6 +107,24 @@ s="( )"-->匹配写法 "%(%s*%)"    //%s* 匹配0次或多次
 
 --20.4 捕获
 --20.5 替换
+--string.gsub 第三个参数 还可以是 函数 或者table
+--(1) 函数  --调用时的参数就是捕获到的内容  该函数的返回值作为要替换的字符串
+function transfer(s)
+    local res=s or ""
+    return res .. "New"
+end
+
+s=string.gsub( "A  B  C","B",transfer)
+print(s) -->A BNew C
+
+
+--(2) table --每次捕获的内容为key  在table中查找将对应的value作为要替换的字符串
+t={mum="Lisa"}
+
+s=string.gsub( "mum is a good woman","mum",t)
+
+print(s) -->Lisa is a good woman
+
 --20.5.1 URL编码
 --20.5.2 tab扩展
 --20.6 技巧
