@@ -1,6 +1,6 @@
 --Chpater 6 深入函数
 
-function foo(x)  return x*2end
+function foo(x)  return x*2 end
 --等同于 
 foo=function (x) return x*2 end 
 

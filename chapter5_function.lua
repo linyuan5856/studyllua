@@ -37,7 +37,7 @@ print(k,v)
 end
 end
 
-Debug {foo()}-取全部返回值
+Debug {foo()}--取全部返回值
 --output 
 -- 1 1
 -- 2 2
