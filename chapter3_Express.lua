@@ -35,7 +35,7 @@ a=5 b=3
 max=a>b and a or b   
 print(max)  --5
 
---not nil     -->false
+--not nil     -->true
 --not false   -->true
 --not 0       -->false
 --not not nil -->false
