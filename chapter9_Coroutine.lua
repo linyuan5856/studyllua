@@ -26,7 +26,7 @@ end
  coroutine.resume( co2) -->4
  print(coroutine.status( co2 ))  --> suspended
  coroutine.resume( co2) -->无输出
- 
+ print(coroutine.status( co2 )) -->dead
  
  --当一个协同程序A 唤醒 另一个 协同程序 B，协同程序A 处于特殊状态， “正常”状态
 
